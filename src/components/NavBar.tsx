@@ -1,5 +1,6 @@
 import { HStack, Image, Text } from "@chakra-ui/react";
 import logo from "../assets/logo.webp";
+import ColorModeSwitch from "./ColorModeSwitch";
 
 const NavBar = () => {
   return (
@@ -8,6 +9,7 @@ const NavBar = () => {
       <Text fontSize="xl" fontWeight="bold">
         Nav Bar
       </Text>
+      <ColorModeSwitch />
     </HStack>
   );
 };
