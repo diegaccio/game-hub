@@ -15,6 +15,7 @@ export interface Game {
   //design smells
   //we shoul have an array of platforms
   parent_platforms: {platform: Platform}[];
+  metacritic: number;
 }
 
 interface GameResponse {
