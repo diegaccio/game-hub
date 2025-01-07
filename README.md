@@ -16,7 +16,7 @@ To get started with GameHub, follow these steps:
 
 ## About the Course
 
-I really appreciated this course, becouse I started from basically zero knowledge of React and TypeScript, and it covers everithing you need in great details. I also like Mosh's approach to clean and organized code.
+I really appreciated this course because I started with basically zero knowledge of React and TypeScript, and it covers everything you need in great detail. I also like Mosh's approach to clean and organized code.
 This course is the first part of a two-part series, covering the fundamentals. You'll learn how to:
 
 - Build front-end apps with React and TypeScript
