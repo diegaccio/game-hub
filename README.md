@@ -11,8 +11,9 @@ To get started with GameHub, follow these steps:
 1. Clone this repository to your local machine.
 2. Run `npm install` to install the required dependencies.
 3. Get a RAWG API key at https://rawg.io/apidocs. You'll have to create an account first.
-4. Add the API key to **src/services/api-client.ts**
-5. Run `npm run dev` to start the web server.
+4. Create a .env file in the root folder of the project
+5. Add this line VITE_RAWG_API_KEY='your_api_key_goes_here'
+6. Run `npm run dev` to start the web server.
 
 ## About the Course
 
