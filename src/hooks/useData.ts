@@ -3,17 +3,12 @@ import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 
 
-export interface Genre {
-  id: number;
-  name: string;
-}
-
 interface DataResponse<T> {
   count: number;
   results: T[];
 }
 
-const useData= <T> () => {
+const useData= <T> (endpoint: string) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
@@ -22,7 +17,7 @@ const useData= <T> () => {
     const controller = new AbortController();
     setLoading(true);
     apiClient
-      .get<DataResponse>("/genres", { signal: controller.signal })
+      .get<DataResponse<T>>(endpoint, { signal: controller.signal })
       .then((response) => {
         setData(response.data.results); 
         setLoading(false);
@@ -36,7 +31,7 @@ const useData= <T> () => {
     return () => controller.abort();
   }, []);
 
-  return {genres: data, error, isLoading};
+  return {data, error, isLoading};
 };
 
 export default useData;
