@@ -8,13 +8,13 @@ export interface Genre {
   name: string;
 }
 
-interface GenreResponse {
+interface DataResponse<T> {
   count: number;
-  results: Genre[];
+  results: T[];
 }
 
-const useGenres = () => {
-  const [genres, setGenres] = useState<Genre[]>([]);
+const useData= <T> () => {
+  const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
 
@@ -22,9 +22,9 @@ const useGenres = () => {
     const controller = new AbortController();
     setLoading(true);
     apiClient
-      .get<GenreResponse>("/genres", { signal: controller.signal })
+      .get<DataResponse>("/genres", { signal: controller.signal })
       .then((response) => {
-        setGenres(response.data.results); 
+        setData(response.data.results); 
         setLoading(false);
       })
       .catch((error) => {
@@ -36,7 +36,7 @@ const useGenres = () => {
     return () => controller.abort();
   }, []);
 
-  return {genres, error, isLoading};
+  return {genres: data, error, isLoading};
 };
 
-export default useGenres;
+export default useData;
