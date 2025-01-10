@@ -6,6 +6,7 @@ import { useState } from "react";
 import PlatformSelector from "./components/PlatformSelector";
 import { GameQueryParams } from "./hooks/useGames";
 import SortSelector from "./components/SortSelector";
+import "./App.css";
 
 function App() {
   const [queryParams, setQueryParams] = useState<GameQueryParams>(
@@ -22,7 +23,9 @@ function App() {
         }}
       >
         <GridItem area="nav">
-          <NavBar />
+          <NavBar
+            onSearch={(search) => setQueryParams({ ...queryParams, search })}
+          />
         </GridItem>
         <Show above="lg">
           <GridItem area="aside" paddingX={5}>
