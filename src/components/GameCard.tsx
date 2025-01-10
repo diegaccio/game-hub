@@ -3,6 +3,7 @@ import { Game } from "../hooks/useGames";
 import PlatformIconList from "./PlatformIconList";
 import GameScore from "./GameScore";
 import getCroppedImageUrl from "../services/image-url";
+import noImagePlaceholder from "../assets/no-image-placeholder-6f3882e0.webp";
 
 interface GameCardProps {
   game: Game;
@@ -11,7 +12,13 @@ interface GameCardProps {
 const GameCard = ({ game }: GameCardProps) => {
   return (
     <Card>
-      <Image src={getCroppedImageUrl(game.background_image)}></Image>
+      <Image
+        src={
+          game.background_image
+            ? getCroppedImageUrl(game.background_image)
+            : noImagePlaceholder
+        }
+      ></Image>
       <CardBody>
         <Heading fontSize="2xl">{game.name}</Heading>
         <HStack justifyContent="space-between">
