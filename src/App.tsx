@@ -42,7 +42,12 @@ function App() {
                 setQueryParams({ ...queryParams, platform })
               }
             />
-            <SortSelector />
+            <SortSelector
+              selectedSort={queryParams.ordering}
+              onSelectSort={(ordering) =>
+                setQueryParams({ ...queryParams, ordering })
+              }
+            />
           </HStack>
           <GameGrid queryParams={queryParams}></GameGrid>
         </GridItem>

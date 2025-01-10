@@ -15,9 +15,10 @@ export interface Game {
 export interface GameQueryParams {
   genre: Genre | null;
   platform: Platform | null;
+  ordering: string;
 }
 
 
-const useGames = (queryParams: GameQueryParams) => useData<Game>("/games", {params: {genres: queryParams.genre?.id, parent_platforms: queryParams.platform?.id}}, [queryParams])
+const useGames = (queryParams: GameQueryParams) => useData<Game>("/games", {params: {genres: queryParams.genre?.id, parent_platforms: queryParams.platform?.id, ordering: queryParams.ordering}}, [queryParams])
 
 export default useGames;
