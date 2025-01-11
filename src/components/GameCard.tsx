@@ -4,6 +4,7 @@ import PlatformIconList from "./PlatformIconList";
 import GameScore from "./GameScore";
 import getCroppedImageUrl from "../services/image-url";
 import noImagePlaceholder from "../assets/no-image-placeholder-6f3882e0.webp";
+import Emoji from "./Emoji";
 
 interface GameCardProps {
   game: Game;
@@ -26,7 +27,10 @@ const GameCard = ({ game }: GameCardProps) => {
           ></PlatformIconList>
           <GameScore score={game.metacritic}></GameScore>
         </HStack>
-        <Heading fontSize="2xl">{game.name}</Heading>
+        <Heading fontSize="2xl">
+          {game.name}
+          <Emoji rating={game.rating_top} />
+        </Heading>
       </CardBody>
     </Card>
   );

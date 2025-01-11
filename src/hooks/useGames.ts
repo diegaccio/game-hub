@@ -10,6 +10,7 @@ export interface Game {
   //we shoul have an array of platforms
   parent_platforms: {platform: Platform}[];
   metacritic: number;
+  rating_top: number;
 }
 
 export interface GameQueryParams {
