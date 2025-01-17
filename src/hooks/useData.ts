@@ -3,7 +3,7 @@ import apiClient from "../services/api-client";
 import { CanceledError, AxiosRequestConfig } from "axios";
 
 
-interface DataResponse<T> {
+export interface DataResponse<T> {
   count: number;
   results: T[];
 }
