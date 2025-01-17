@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 const apiKey = import.meta.env.VITE_RAWG_API_KEY;
 
@@ -11,7 +11,25 @@ export interface DataResponse<T> {
   results: T[];
 }
 
-export default axios.create({
+const axiosInstance = axios.create({
   baseURL: "https://api.rawg.io/api",
   params: { key: apiKey },
 });
+
+class ApiClient<T> {
+  // With parameter properties we can
+  // create and initialize properties in one place.
+  constructor(private endpoint: string) {}
+
+  getAll = (config: AxiosRequestConfig = {}) => {
+    return axiosInstance
+      .get<DataResponse<T>>(this.endpoint, config)
+      .then((res) => res.data);
+  };
+
+  //post = (data: T) => {
+  //  return axiosInstance.post<T>(this.endpoint, data).then((res) => res.data);
+  //};
+}
+
+export default ApiClient;
