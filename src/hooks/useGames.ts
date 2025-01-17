@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Genre } from "./useGenres";
 import { Platform } from "./usePlatforms";
 import apiClient from "../services/api-client";
-import { DataResponse } from "./useData";
+import { DataResponse } from "../services/api-client";
 
 export interface Game {
   id: number;

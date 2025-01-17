@@ -2,7 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 //import genres from "../data/genres";
 import apiClient from "../services/api-client";
-import { DataResponse } from "./useData";
+import { DataResponse } from "../services/api-client";
 import genres from "../data/genres";
 
 export interface Genre {

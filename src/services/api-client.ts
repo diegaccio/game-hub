@@ -6,4 +6,12 @@ if (!apiKey) {
   throw new Error("API key is not defined in the environment variables.");
 }
 
-export default axios.create({ baseURL: 'https://api.rawg.io/api',  params: { key: apiKey }});
+export interface DataResponse<T> {
+  count: number;
+  results: T[];
+}
+
+export default axios.create({
+  baseURL: "https://api.rawg.io/api",
+  params: { key: apiKey },
+});
