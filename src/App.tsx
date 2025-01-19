@@ -32,9 +32,9 @@ function App() {
           <GridItem area="aside" paddingX={5}>
             <GenreList
               onSelectGenre={(genre) =>
-                setQueryParams({ ...queryParams, genre })
+                setQueryParams({ ...queryParams, genreId: genre.id })
               }
-              selectedGenre={queryParams.genre}
+              selectedGenreId={queryParams.genreId ?? 0}
             ></GenreList>
           </GridItem>
         </Show>
@@ -43,9 +43,9 @@ function App() {
             <GameHeading gameQueryParams={queryParams} />
             <HStack marginBottom={5} spacing={5}>
               <PlatformSelector
-                selectedPlatform={queryParams.platform}
+                selectedPlatformId={queryParams.platformId}
                 onSelectPlatform={(platform) =>
-                  setQueryParams({ ...queryParams, platform })
+                  setQueryParams({ ...queryParams, platformId: platform?.id })
                 }
               />
               <SortSelector
