@@ -1,13 +1,9 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BiChevronDown } from "react-icons/bi";
-
-interface SortSelectorProps {
-  onSelectSort: (sort: string) => void;
-  selectedSort: string;
-}
+import useGameQueryStore from "../store";
 
 // Available fields: name, released, added, created, updated, rating, metacritic. You can reverse the sort order adding a hyphen, for example: -released.
-const SortSelector = ({ onSelectSort, selectedSort }: SortSelectorProps) => {
+const SortSelector = () => {
   const sortOrders = [
     { value: "", label: "Relevance" },
     { value: "-added", label: "Date Added" },
@@ -16,6 +12,9 @@ const SortSelector = ({ onSelectSort, selectedSort }: SortSelectorProps) => {
     { value: "-metacritic", label: "Popularity" },
     { value: "rating", label: "Average Rating" },
   ];
+
+  const selectedSort = useGameQueryStore((s) => s.gameQuery.ordering);
+  const setSelectedSort = useGameQueryStore((s) => s.setOrdering);
 
   const currentSortOrder = sortOrders.find(
     (sortOrder) => sortOrder.value === selectedSort
@@ -29,7 +28,7 @@ const SortSelector = ({ onSelectSort, selectedSort }: SortSelectorProps) => {
       <MenuList>
         {sortOrders.map((sort) => (
           <MenuItem
-            onClick={() => onSelectSort(sort.value)}
+            onClick={() => setSelectedSort(sort.value)}
             key={sort.value}
             value={sort.value}
           >

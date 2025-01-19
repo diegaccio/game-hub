@@ -1,19 +1,13 @@
 import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
-import NavBar from "./components/NavBar";
-import GameGrid from "./components/GameGrid";
-import GenreList from "./components/GenreList";
-import { useState } from "react";
-import PlatformSelector from "./components/PlatformSelector";
-import { GameQueryParams } from "./hooks/useGames";
-import SortSelector from "./components/SortSelector";
 import "./App.css";
+import GameGrid from "./components/GameGrid";
 import GameHeading from "./components/GameHeading";
+import GenreList from "./components/GenreList";
+import NavBar from "./components/NavBar";
+import PlatformSelector from "./components/PlatformSelector";
+import SortSelector from "./components/SortSelector";
 
 function App() {
-  const [queryParams, setQueryParams] = useState<GameQueryParams>(
-    {} as GameQueryParams
-  );
-
   return (
     <>
       <Grid
@@ -24,39 +18,22 @@ function App() {
         }}
       >
         <GridItem area="nav">
-          <NavBar
-            onSearch={(search) => setQueryParams({ ...queryParams, search })}
-          />
+          <NavBar />
         </GridItem>
         <Show above="lg">
           <GridItem area="aside" paddingX={5}>
-            <GenreList
-              onSelectGenre={(genre) =>
-                setQueryParams({ ...queryParams, genreId: genre.id })
-              }
-              selectedGenreId={queryParams.genreId ?? 0}
-            ></GenreList>
+            <GenreList />
           </GridItem>
         </Show>
         <GridItem area="main">
           <Box paddingLeft={2}>
-            <GameHeading gameQueryParams={queryParams} />
+            <GameHeading />
             <HStack marginBottom={5} spacing={5}>
-              <PlatformSelector
-                selectedPlatformId={queryParams.platformId}
-                onSelectPlatform={(platform) =>
-                  setQueryParams({ ...queryParams, platformId: platform?.id })
-                }
-              />
-              <SortSelector
-                selectedSort={queryParams.ordering}
-                onSelectSort={(ordering) =>
-                  setQueryParams({ ...queryParams, ordering })
-                }
-              />
+              <PlatformSelector />
+              <SortSelector />
             </HStack>
           </Box>
-          <GameGrid queryParams={queryParams}></GameGrid>
+          <GameGrid />
         </GridItem>
       </Grid>
     </>
