@@ -8,6 +8,7 @@ if (!apiKey) {
 
 export interface DataResponse<T> {
   count: number;
+  next: string | null;
   results: T[];
 }
 
