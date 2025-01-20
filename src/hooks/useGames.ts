@@ -42,6 +42,7 @@ const useGames = () => {
       return lastPage.next ? pages.length + 1 : undefined;
     },
     staleTime: ms("60m"),
+    //refetchInterval: ms("5s"), // Auto refresh every second
   });
 };
 

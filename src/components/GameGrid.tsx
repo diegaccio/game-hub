@@ -18,6 +18,8 @@ const GameGrid = () => {
   const skeletons: number[] = Array.from({ length: 16 }, (_, i) => i);
   //console.log(skeletons); // Output: [0, 1, 2, 3, ..., 15];
 
+  console.log("Rendering Games Grid");
+
   if (error) return <Text>{error.message}</Text>;
 
   const fetchedDataCount =
