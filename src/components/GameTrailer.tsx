@@ -1,4 +1,4 @@
-import { Game } from "../entities/Game";
+import Game from "../entities/Game";
 import useTrailers from "../hooks/useTrailers";
 
 interface GameTrailerProps {
