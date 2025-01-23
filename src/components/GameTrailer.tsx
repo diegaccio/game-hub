@@ -6,9 +6,11 @@ interface GameTrailerProps {
 }
 
 const GameTrailer = ({ game }: GameTrailerProps) => {
-  const { data, error } = useTrailers(game.id);
+  const { data, isLoading, error } = useTrailers(game.id);
 
-  if (error) return null;
+  if (isLoading) return null;
+
+  if (error) throw error;
 
   const first = data?.results[0];
 
